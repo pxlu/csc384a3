@@ -1,0 +1,49 @@
+Name,Price,Brand,Seasonal,Categories,Entertainment?,Indoor?,Recommended Age
+XL Winter Jacket,$150.00,American Eagle,"Winter,Spring",Clothing,No,No,16+
+Tea Set,$40.00,,,Household,No,,8+
+Plastic Bag,$0.05,Value Mart,,Household,No,,8+
+Gardening Kit,$39.99,GardenHome,"Spring,Summer",Gardening,No,No,12+
+Rake,$19.99,Corona,Autumn,Gardening,No,No,12+
+Snow Shovel,$9.99,Garant,"Winter,Spring",Gardening,No,No,12+
+BLU,$49.99,BLU,,Electronics,No,,8+
+OnePlusOne,$499.99,OnePlus,,Electronics,No,,12+
+iPhone,$799.99,Apple,,Electronics,No,,18+
+Gift Card,$20.00,Visa,,Other,No,,12+
+Gift Card,$50.00,Mastercard,,Other,No,,12+
+PS Plus Card,$69.99,Sony,,Other,,,12+
+3DS,$129.99,Nintendo,,Electronics,,,8+
+PS4,$329.99,Sony,,Electronics,,,8+
+Wii U,$380.00,Nintendo,,Electronics,,,8+
+Xbox One,$379.99,Microsoft,,Electronics,,,8+
+Kindle,$100.00,Amazon,,Electronics,,,
+Steam Controller,$49.99,Valve,,Electronics,,,8+
+PS4 Controller,$69.99,Sony,,Electronics,,,8+
+Xbox One Controller,$69.99,Microsoft,,Electronics,,,8+
+Expensive Light bulbs,$49.99,Philips,,Electronics,No,,12+
+Golf Clubs,$100.00,,"Summer,Autumn",Sports,No,No,12+
+Tennis Racket,$90.00,,"Summer,Autumn",Sports,No,No,8+
+Skis,$300.00,,Winter,Sports,No,No,8+
+Poker Set,$60.00,,,Entertainment,,,12+
+Board Games,$29.99,Hasbro,,Entertainment,,,8+
+Trade Paperback,$25.00,Yen Press,,Book,No,,8+
+DVD Set,$20.00,Disney,,Entertainment,,,8+
+Digital Camera,$169.99,Sony,,Electronics,No,,12+
+Spice Rack,$39.99,,,Household,No,,
+Cookware Set,$65.00,,,Household,No,,12+
+Leather Purse,$175.00,,,Accessories,No,,12+
+Wallet,$50.00,,,Accessories,No,,8+
+Umbrella,$9.99,Amazon Basics,"Spring,Summer,Autumn",Accessories,No,No,4+
+Beach Towel,$15.00,,Summer,Other,No,No,
+Light Sweater,$70.00,GAP,"Spring,Autumn",Clothing,No,,
+"""Design by Apple"" Book",$299.99,Apple,,Book,No,,18+
+Snowshoe,$80.00,,Winter,Sports,No,No,
+Sled,$45.00,,Winter,Sports,No,No,4+
+Snowboard,$200.00,,Winter,Sports,No,No,12+
+Skates,$40.00,,"Autumn,Winter",Sports,No,No,8+
+Rollerblades,$50.00,,"Spring,Summer,Autumn",Sports,No,No,8+
+Badminton Set,$35.00,,"Spring,Summer,Autumn",Sports,No,No,8+
+Tent,$80.00,,"Spring,Summer,Autumn",Sports,No,No,12+
+Box of Candy,$9.99,Nestle,,,No,,4+
+Gloves,$25.00,,"Autumn,Winter",Clothing,No,,
+Scarf,$35.00,,"Autumn,Winter",Clothing,No,,
+Leather Boots,$65.00,,"Spring,Autumn",Clothing,No,,
