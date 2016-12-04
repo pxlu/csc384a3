@@ -90,5 +90,30 @@ def gift_finder_csp_model(gift_list, user_specification):
     # Brand competition within category (n-ary)
 
     # Price (n-ary) - combination of items must not be over price specified
+    constraint = Constraint('Max price', va)
+    constraint.add_satisfying_tuples(generate_satisfying_price_tuples(va, user_specification.price))
+    model.add_constraint(constraint)
 
     return model, variable_array
+
+def generate_satisfying_price_tuples(va, max_price):
+    domain = [var.cur_domain() for var in va]
+    satisfying_tuples = []
+
+    # generate permutation of domain values to assign
+    for assignment in itertools.product(*domain):
+        if (is_below_price(va, assignment, max_price)):
+            print(assignment)
+            satisfying_tuples.append(assignment)
+    return satisfying_tuples
+
+def is_below_price(va, assignment, price):
+    ls = list(assignment)
+
+    for i in range(len(ls)):
+        if (ls[i] == 1):
+            price -= va[i].properties.price
+
+    if (price < 0):
+        return False
+    return True

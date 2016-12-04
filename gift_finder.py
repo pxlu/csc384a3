@@ -16,6 +16,7 @@ def test_run():
     spec = lambda: None
     spec.age = 15
     spec.season = "Winter"
+    spec.price = 50
 
     # normalize data
     for item in gift_items_data:
@@ -36,8 +37,6 @@ def test_run():
 
     solver = BT(csp)
     solver.bt_search(prop_BT, orderings.ord_expensive_first, orderings.val_always_select)
-
-    print(var)
 
 
 def main():
