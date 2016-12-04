@@ -14,24 +14,25 @@ def test_run():
     # should have a prompt that prompts user for input
     # stub the user response object for now.
     spec = lambda: None
-    spec.age = 6
+    spec.age = 15
     spec.season = "Winter"
 
-    # turn string into numbers
+    # normalize data
     for item in gift_items_data:
         item.rec_age = float(item.rec_age[:-1])
         item.price = float(item.price[1:])
 
+        if item.is_indoor == '':
+            item.is_indoor = None
+        else:
+            item.is_indoor = item.is_indoor != "No"
+
+        if item.is_entertainment == '':
+            item.is_entertainment = None
+        else:
+            item.is_entertainment = item.is_entertainment != "No"
+
     csp, var = gfc.gift_finder_csp_model(gift_items_data, spec)
-
-    # print(model)
-    # print(var)
-
-    # lister = []
-    #
-    # for i in range(len(var)):
-    #     lister.append(var[i].cur_domain())
-    # print(lister)
 
     solver = BT(csp)
     solver.bt_search(prop_BT, orderings.ord_expensive_first, orderings.val_always_select)

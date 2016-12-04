@@ -26,7 +26,7 @@ val_ordering == a function with the following template
 '''
 
 def ord_expensive_first(csp):
-    # higher chance that we can quickly go through combinations
+    # higher probability to exhaust combinations
     # with this variable early on
     highestCost = 0     # all items must have cost > 0
     varSelected = None

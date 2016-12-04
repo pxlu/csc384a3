@@ -43,7 +43,7 @@ def gift_finder_csp_model(gift_list, user_specification):
     # unary constraints
     for i in range(len(variable_array)):
         # Minimum Age (unary)
-        constraint = Constraint('min age for item:' + va[i].properties.name, [va[i]])
+        constraint = Constraint('min age for item: ' + va[i].properties.name, [va[i]])
         satisfying_tuples = [(0,)]
         if (va[i].properties.rec_age <= user_specification.age):
             satisfying_tuples.append((1,))
@@ -51,13 +51,44 @@ def gift_finder_csp_model(gift_list, user_specification):
         model.add_constraint(constraint)
 
         # Season (unary) - items must belong to season specified.
-        constraint = Constraint('seasonal item:' + va[i].properties.name, [va[i]])
+        constraint = Constraint('seasonal item: ' + va[i].properties.name, [va[i]])
         satisfying_tuples = [(0,)]
-        if (va[i].properties.seasonal == None or
+        if (va[i].properties.seasonal == "Any" or
             user_specification.season in va[i].properties.seasonal
         ):
             satisfying_tuples.append((1,))
         constraint.add_satisfying_tuples(satisfying_tuples)
         model.add_constraint(constraint)
+
+    # binary constraints
+    for i in range(len(variable_array)):
+        for j in range(i+1, len(variable_array)):
+            # Indoor (binary) - if we choose an indoor item, everything else
+            # must also be an indoor item or both.
+            constraint = Constraint('indoor item: ' + va[i].properties.name, [va[i], va[j]])
+            satisfying_tuples = [(0,0), (0,1), (1,0)]
+            if (va[i].properties.is_indoor == None or
+                va[j].properties.is_indoor == None or
+                (va[i].properties.is_indoor == va[j].properties.is_indoor)
+            ):
+                satisfying_tuples.append((1,1))
+            constraint.add_satisfying_tuples(satisfying_tuples)
+            model.add_constraint(constraint)
+
+            # Entertainment (binary) - if we choose an entertainment item,
+            # everything else must also be it or both.
+            constraint = Constraint('entertainment item: ' + va[i].properties.name, [va[i], va[j]])
+            satisfying_tuples = [(0,0), (0,1), (1,0)]
+            if (va[i].properties.is_entertainment == None or
+                va[j].properties.is_entertainment == None or
+                (va[i].properties.is_entertainment == va[j].properties.is_entertainment)
+            ):
+                satisfying_tuples.append((1,1))
+            constraint.add_satisfying_tuples(satisfying_tuples)
+            model.add_constraint(constraint)
+
+    # Brand competition within category (n-ary)
+
+    # Price (n-ary) - combination of items must not be over price specified
 
     return model, variable_array
