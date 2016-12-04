@@ -99,6 +99,7 @@ def gift_finder_csp_model(gift_list, user_specification):
 def generate_satisfying_price_tuples(va, max_price):
     domain = [var.cur_domain() for var in va]
     satisfying_tuples = []
+    print("creating valid permutations of price assignments, this may take a while..")
 
     # generate permutation of domain values to assign
     for assignment in itertools.product(*domain):

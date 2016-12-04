@@ -16,7 +16,7 @@ def test_run():
     spec = lambda: None
     spec.age = 15
     spec.season = "Winter"
-    spec.price = 50
+    spec.price = 100
 
     # normalize data
     for item in gift_items_data:

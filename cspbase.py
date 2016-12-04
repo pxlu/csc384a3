@@ -390,6 +390,7 @@ class BT:
         unasgn_vars = list() #used to track unassigned variables
         self.TRACE = False
         self.runtime = 0
+        self.solutionsTracker = []
 
     def trace_on(self):
         '''Turn search trace on'''
@@ -484,19 +485,27 @@ class BT:
             print("CSP{} detected contradiction at root".format(
                 self.csp.name))
         else:
-            status = self.bt_recurse(propagator, var_ord,val_ord, 1)   #now do recursive search
+            status = self.bt_recurse(propagator, var_ord, val_ord, 1)   #now do recursive search
 
 
-        self.restoreValues(prunings)
-        if status == False:
-            print("CSP{} unsolved. Has no solutions".format(self.csp.name))
-        if status == True:
-            print("CSP {} solved. CPU Time used = {}".format(self.csp.name,
-                                                             time.process_time() - stime))
-            self.csp.print_soln()
+        # self.restoreValues(prunings)
+        # if status == False:
+        #     print("CSP{} unsolved. Has no solutions".format(self.csp.name))
+        # if status == True:
+        #     print("CSP {} solved. CPU Time used = {}".format(self.csp.name,
+        #                                                      time.process_time() - stime))
+        #     self.csp.print_soln()
 
         print("bt_search finished")
-        self.print_stats()
+        print("found following assignments:")
+        # maybe filter these values?
+        # such as remove less optimal assignment where assignment of another
+        # variable is still possible (keep total cost of items close to price set)
+        for sol in self.solutionsTracker:
+            # remove all zero assignment
+            if len(sol) != 0:
+                print(sol)
+        # self.print_stats()
 
     def bt_recurse(self, propagator, var_ord, val_ord, level):
         '''Return true if found solution. False if still need to search.
@@ -507,7 +516,14 @@ class BT:
 
         if not self.unasgn_vars:
             #all variables assigned
-            return True
+            # return True
+            # track solutions
+            sol = []
+            for v in self.csp.vars:
+                if v.get_assigned_value():
+                    sol.append(v.properties.name)
+            self.solutionsTracker.append(sol)
+            return False # look for additional solutions
         else:
             ##Figure out which variable to assign,
             ##Then remove it from the list of unassigned vars
