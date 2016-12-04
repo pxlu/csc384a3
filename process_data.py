@@ -9,8 +9,10 @@ def main():
 		data_list = [a3c.ItemProfile(name=row['Name'], price=row['Price'],brand=row['Brand'] if row['Brand'] != '' else 'None', seasonal=row['Seasonal'] if row['Seasonal'] != '' else 'Any',category=row['Categories'],is_entertainment=row['Entertainment?'],is_indoor=row['Indoor?'],rec_age=row['Recommended Age'] if row['Recommended Age'] != '' else '0+') for row in data_reader]
 
 	for data in data_list:
-		print(str(data))
-		# print(_detailed_info(data))
+		# print(str(data))
+		print(a3c.ItemProfile._detailed_info(data))
+
+	return data_list
 
 if __name__ == "__main__":
 	main()
